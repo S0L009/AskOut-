@@ -3,6 +3,12 @@
 
     "USER" : "Alice",
 
-    "GEMINI_API" : "GEMINI_API"
+    "GEMINI_API" : "AIzaSyDivpPwD2vh0gonjTJAh0scb-hizo-m_5o",
+
+
+    "RADIUS" : 3000,
+
+    "Restaurant_count" : 5
+
 
 }
