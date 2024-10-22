@@ -4,9 +4,9 @@
 
 It is built using **AI** technologies and the **Google Maps API** (API keys are securely stored in `config.json`).
 
-### Core Features
+FastAPI Endpoint**: `main.py` contains the FastAPI endpoint and essential utility functions.
 
-- **FastAPI Endpoint**: `main.py` contains the FastAPI endpoint and essential utility functions.
+### Core Features
   
 - **AI-Powered Matching**: The application utilizes **AI** to identify suitable restaurant matches for users and their friends.
 
