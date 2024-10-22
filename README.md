@@ -58,7 +58,7 @@ FastAPI Endpoint: `main.py` contains the FastAPI endpoint and essential utility 
 1. Clone the repository.
 2. In the terminal, run `uvicorn main:app --reload` to start the FastAPI server locally.
 3. Modify the inputs in `reservations.py` (specifically the variable **preferences**) and run the file.
-4. You should see a JSON file saved in your local storage, along with the JSON string printed in the terminal within a couple of seconds.
+4. You should see a JSON file `output.json` saved in your local storage, along with the JSON string printed in the terminal within a couple of seconds.
 
 ### Tech Stack
 - **FastAPI**
