@@ -66,4 +66,4 @@ FastAPI Endpoint**: `main.py` contains the FastAPI endpoint and essential utilit
 - **Google Maps API**
 
 
-(I worked on everything locally and didn't add a database or create a user interface. I focused mainly on the backend and implemented one of the features.)
+I did all the work locally without adding a database or creating a user interface. I concentrated on the logic and implemented one of the features I had in mind.
