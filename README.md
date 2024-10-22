@@ -8,7 +8,8 @@ FastAPI Endpoint: `main.py` contains the FastAPI endpoint and essential utility 
 
 ### Core Feature
   
-- **AI-Powered Matching**: The application utilizes **AI** to identify suitable restaurant matches for users and their friends.
+- **AI-Powered Matching**: The application uses AI to identify matches between the user and additional users based on their preferences, such as cuisine, preferred dining time, and thier address for restaurant reservations.
+
 
 ### Workflow
 
