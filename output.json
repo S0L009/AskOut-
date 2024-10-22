@@ -1,0 +1,23 @@
+{
+    "matches": [
+        {
+            "friends": [
+                "Bob",
+                "Charlie"
+            ],
+            "restaurant_name": "Indian Express",
+            "timing": "Wednesday: Open 24 hours",
+            "reason_for_this_match": "Indian Express accommodates both Alice's and her friends' preferences for Indian cuisine. Its 24-hour availability on Wednesday caters to Bob's weekday lunch preference and provides flexibility for Charlie's evening preference.",
+            "group_or_friend": "group"
+        },
+        {
+            "friends": [
+                "Dave"
+            ],
+            "restaurant_name": "Hoy Punjab, Hyderabad",
+            "timing": "Wednesday: 12:00  -  11:30PM",
+            "reason_for_this_match": "Hoy Punjab, Hyderabad aligns with Alice and Dave's shared love for Indian cuisine. The restaurant's wide operational hours, especially during dinner time, perfectly suit Dave's weekend dinner preference.",
+            "group_or_friend": "friend"
+        }
+    ]
+}
