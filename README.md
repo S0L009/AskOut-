@@ -13,24 +13,24 @@ FastAPI Endpoint: `main.py` contains the FastAPI endpoint and essential utility 
 ### Workflow
 
 1. **Friend Identification**:
-   - The application first identifies whether other users have the current user as a friend by using Python code.
-   - It then checks for any common cuisines between the user and their friends.
+   - The application first filters out whether additional users have the current user as a friend.
+   - It then checks for any common cuisines between the user and the filtered additional users.
 
 2. **Restaurant Data Retrieval**:
    - Restaurant names, addresses, and operating hours are retrieved using the **Google Places API**, based on the user's **cuisine preferences**, **location**, and **search radius** (configured in `config.json`).
 
 3. **Distance Calculation**:
-   - The application calculates the distances between friends' addresses and the restaurant locations using the **Google Maps Distance Matrix API**.
+   - The application calculates the distances between additional user's addresses and the restaurant locations using the **Google Maps Distance Matrix API**.
 
 4. **Prompt Generation for AI**:
    - A single prompt is constructed using:
      - User's info (name, cuisines, preferred dining time)
-     - Friends' info (names, cuisines, preferred dining times)
-     - Restaurant details (names, timings, distances from friends to the restaurant)
+     - Additional user's info (names, cuisines, preferred dining times)
+     - Restaurant details (names, timings, distances from Other user's to the restaurant)
    - This prompt is sent to the language model (LLM) for matching.
 
 5. **AI Model Used**:
-   - Currently, the application uses **GEMINI-1.5-PRO** for generating restaurant matches.
+   - Currently, the application uses **GEMINI-1.5-pro** for generating restaurant matches.
 
 6. **API Input Format**:
    - The `reservation.py` file calls the API with dummy inputs formatted as follows:
@@ -47,7 +47,7 @@ FastAPI Endpoint: `main.py` contains the FastAPI endpoint and essential utility 
        // Same format for Person2, Person3
    }
 7. API Call and Output
-- The API call takes approximately **10 seconds** (currently not optimized) and returns a JSON string output that includes the matches and reservations at restaurants.
+- The API call takes approximately **5-10 seconds** (currently not optimized) and returns a JSON string output that includes the matches and reservations at restaurants.
 - This JSON string is saved locally as a JSON file.
 
 ### FastAPI Swagger-UI
