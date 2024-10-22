@@ -1,0 +1,24 @@
+{
+    "matches": [
+        {
+            "friends": [
+                "Bob",
+                "Charlie",
+                "Dave"
+            ],
+            "restaurant_name": "Indian Express",
+            "timing": "Wednesday: Open 24 hours",
+            "reason_for_this_match": "Indian Express accommodates everyone's preference for Indian cuisine and offers the flexibility to dine at any time, making it perfect for a group with varied schedules.",
+            "group_or_friend": "group"
+        },
+        {
+            "friends": [
+                "Dave"
+            ],
+            "restaurant_name": "Hoy Punjab, Hyderabad",
+            "timing": "Wednesday: 12:00 \u2013 11:30PM",
+            "reason_for_this_match": "Hoy Punjab, Hyderabad aligns with both your and Dave's shared love for Indian cuisine and offers dinner timings suitable for a weekend outing.",
+            "group_or_friend": "friend"
+        }
+    ]
+}
