@@ -1,82 +1,69 @@
-# AskOut - Restaurant Reservation Backend
+# AskOut - Restaurant Reservation (Backend Only)
 
-AskOut is a backend service for a restaurant reservation app. The backend identifies suitable restaurant matches for users and their friends based on cuisine preferences, dining times, and distances between users, their friends, and restaurants. This project uses several APIs to gather relevant data and generate optimal matches, providing a seamless dining experience.
+**AskOut** is a sophisticated application designed to make restaurant reservations for users based on their preferences, including **cuisine**, **time**, and **address**. The app leverages **AI** to analyze and find matches from other users' data, ensuring an optimal dining experience.
 
-## Features
+It is built using **AI** technologies and the **Google Maps API** (API keys are securely stored in `config.json`).
 
-- **Restaurant Matching**: Based on user and friend preferences for cuisines and dining times.
-- **Distance Calculation**: Calculates the distance between a restaurant and user/friend addresses using Google Maps API.
-- **AI-driven Suggestions**: Uses LangChain's API to generate tailored restaurant recommendations.
+### Core Features
 
-## Tech Stack
+- **FastAPI Endpoint**: `main.py` contains the FastAPI endpoint and essential utility functions.
+  
+- **AI-Powered Matching**: The application utilizes **AI** to identify suitable restaurant matches for users and their friends.
 
-- **FastAPI**: Framework for building the API.
-- **Google Maps API**: For geocoding, distance calculations, and restaurant searches.
-- **LangChain API**: To process and generate restaurant match suggestions based on user and friend preferences.
+### Workflow
 
-## Setup and Installation
+1. **Friend Identification**:
+   - The application first identifies whether other users have the current user as a friend by using Python code.
+   - It then checks for any common cuisines between the user and their friends.
 
-1. Clone the repository:
+2. **Restaurant Data Retrieval**:
+   - Restaurant names, addresses, and operating hours are retrieved using the **Google Places API**, based on the user's **cuisine preferences**, **location**, and **search radius** (configured in `config.json`).
 
-    ```bash
-    git clone https://github.com/yourusername/AskOut.git
-    cd AskOut
-    ```
+3. **Distance Calculation**:
+   - The application calculates the distances between friends' addresses and the restaurant locations using the **Google Maps Distance Matrix API**.
 
-2. Create a virtual environment:
+4. **Prompt Generation for AI**:
+   - A single prompt is constructed using:
+     - User's info (name, cuisines, preferred dining time)
+     - Friends' info (names, cuisines, preferred dining times)
+     - Restaurant details (names, timings, distances from friends to the restaurant)
+   - This prompt is sent to the language model (LLM) for matching.
 
-    ```bash
-    python -m venv env
-    source env/bin/activate  # On Windows use `env\Scripts\activate`
-    ```
+5. **AI Model Used**:
+   - Currently, the application uses **GEMINI-1.5-PRO** for generating restaurant matches.
 
-3. Install dependencies:
+6. **API Input Format**:
+   - The `reservation.py` file calls the API with dummy inputs formatted as follows:
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+   ```json
+   {
+       "Person1": {
+           "name": "Person1",
+           "cuisines": "Chinese, Italian",
+           "preferred time": "Weekends",
+           "friend's name": ["Person2", "Person3"],
+           "Address": "address 503"
+       }
+       // Same format for Person2, Person3
+   }
+7. API Call and Output
+- The API call takes approximately **10 seconds** (currently not optimized) and returns a JSON string output that includes the matches and reservations at restaurants.
+- This JSON string is saved locally as a JSON file.
 
-4. Set up API keys:
+### FastAPI Swagger-UI
+![Swagger UI](fastapi_swagger.png)
 
-    - Create a `config.json` file in the project directory with your Google Maps and LangChain API keys:
+### Running the API
+1. Clone the repository.
+2. In the terminal, run `uvicorn main:app --reload` to start the FastAPI server locally.
+3. Modify the inputs in `reservations.py` (specifically the variable **preferences**) and run the file.
+4. You should see a JSON file saved in your local storage, along with the JSON string printed in the terminal within a couple of seconds.
 
-    ```json
-    {
-      "USER": "your_username",
-      "GOOGLE_MAPS_KEY": "your_google_maps_api_key",
-      "GEMINI_API": "your_langchain_api_key"
-    }
-    ```
+### Tech Stack
+- **FastAPI**
+- **Langchain**
+- **Python**
+- **Google Maps API**
 
-5. Run the application:
 
-    ```bash
-    uvicorn main:app --reload
-    ```
-
-## API Endpoints
-
-### `/`
-
-- **Method**: POST
-- **Description**: Generates restaurant recommendations for users and their friends based on preferences.
-- **Request**: User and friend preferences, including location, cuisine, and dining time.
-- **Response**: A JSON string with restaurant recommendations, including restaurant names, timings, distances, and reasons for the match.
-
-### Example Request:
-
-```json
-{
-  "user": {
-    "name": "Alice",
-    "Address": "123 Main St, City",
-    "cuisines": "Italian, Chinese",
-    "preferred_time": "7:00 PM"
-  },
-  "friend1": {
-    "name": "Bob",
-    "Address": "456 Elm St, City",
-    "cuisines": "Italian, Mexican",
-    "preferred_time": "8:00 PM"
-  }
-}
+(I worked on everything locally and didn't add a database or create a user interface. I focused mainly on the backend and implemented one of the features.)
